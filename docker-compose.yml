@@ -7,6 +7,7 @@ services:
     command: python manage.py runserver 0.0.0.0:8000
     volumes:
       - ./app:/app
+      - f1_cache:/tmp/f1_cache # persistant cache storage
     ports:
       - "8000:8000"
     environment:
@@ -29,3 +30,4 @@ services:
 
 volumes:
   postgres_data:
+  f1_cache:
