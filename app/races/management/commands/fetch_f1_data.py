@@ -1,5 +1,6 @@
 from django.core.management.base import BaseCommand
 import os
+from pathlib import Path
 import fastf1
 from fastf1 import plotting
 from races.models import Race, RaceResult
@@ -13,11 +14,13 @@ class Command(BaseCommand):
         parser.add_argument('--round', type=int, help='Round number')
 
     def handle(self, *args, **options):
-        year = options.get('year', 2024)
-        rnd = options.get('round', 1)
+        year = options.get('year') or 2024
+        rnd = options.get('round') or 1
 
-        cache_dir = "/tmp/f1_cache"
-        mpl_dir = "/tmp/matplotlib"
+        # Use project-local cache directories (Windows-friendly)
+        cache_root = Path.cwd()
+        cache_dir = str((cache_root / "f1_cache").resolve())
+        mpl_dir = str((cache_root / "mpl_config").resolve())
         os.makedirs(cache_dir, exist_ok=True)
         os.makedirs(mpl_dir, exist_ok=True)
         os.environ['MPLCONFIGDIR'] = mpl_dir
