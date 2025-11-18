@@ -5,6 +5,8 @@ It integrates with the **[FastF1](https://github.com/theOehrly/Fast-F1)** librar
 
 > **Note:** This repository contains **only the backend API**. There is no frontend included. See the [Accessing the API](#-accessing-the-api) section below to learn how to interact with the API endpoints.
 
+> 🚀 **Just want to get started quickly?** Check out the [QUICKSTART.md](./QUICKSTART.md) guide for essential commands!
+
 ---
 
 ## 🚀 Features
