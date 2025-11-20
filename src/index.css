@@ -1,0 +1,154 @@
+/* ----------------------------- */
+/* ✔ Load Formula 1 local fonts  */
+/* ----------------------------- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+@import "tailwindcss";
+
+
+@font-face {
+  font-family: "F1 Regular";
+  src: url("src/assets/fonts/Formula1-Regular_web_0.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "F1 Bold";
+  src: url("src/assets/fonts/Formula1-Bold_web_0.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "F1 Wide";
+  src: url("src/assets/fonts/Formula1-Wide_web_0.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+
+@theme {
+  --color-border: hsl(var(--border));
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-card: hsl(var(--card));
+
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-pulse-subtle: pulse-subtle 4s ease-in-out infinite;
+  --animate-fade-in: fade-in 0.7s ease-out forwards;
+  --animate-fade-in-delay-1: fade-in 0.7s ease-out 0.2s forwards;
+  --animate-fade-in-delay-2: fade-in 0.7s ease-out 0.4s forwards;
+  --animate-fade-in-delay-3: fade-in 0.7s ease-out 0.6s forwards;
+  --animate-fade-in-delay-4: fade-in 0.7s ease-out 0.8s forwards;
+  --animate-meteor: meteor 5s linear infinite;
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+  @keyframes pulse-subtle {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.8; }
+  }
+
+  @keyframes fade-in {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes meteor {
+    0% { transform: rotate(215deg) translateX(0); opacity: 1; }
+    70% { opacity: 1; }
+    100% { transform: rotate(215deg) translateX(-500px); opacity: 0; }
+  }
+
+  @keyframes carRun {
+  0% { transform: translateX(-50px); }
+  100% { transform: translateX(350px); }
+  }
+
+  @keyframes barRun {
+    0% { transform: translateX(-150px); }
+    100% { transform: translateX(350px); }
+  }
+
+  @keyframes trackMove {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(300px); }
+  }
+
+}
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 0%;
+    --card: 0 0% 95%;
+    --primary: 0 100% 50%;
+    --primary-foreground: 0 0% 100%;
+    --border: 0 0% 80%;
+  }
+
+  .dark {
+    --background: 0 0% 0%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 15%;
+    --primary: 0 100% 50%;
+    --primary-foreground: 0 0% 100%;
+    --border: 0 0% 30%;
+  }
+
+  * { @apply border-border; }
+  html { @apply scroll-smooth; }
+
+  /* ----------------------------------- */
+  /* ✔ Body uses Formula1 Regular       */
+  /* ----------------------------------- */
+  body {
+    @apply bg-background text-foreground transition-colors duration-300;
+    font-family: "F1 Regular", Inter, sans-serif;
+    font-weight: 400;
+  }
+
+  /* ----------------------------------- */
+  /* ✔ Headers use Formula1 Bold        */
+  /* ----------------------------------- */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: "F1 Bold", sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+  }
+}
+
+/* Optional utility: F1 Wide */
+.f1-wide {
+  font-family: "F1 Wide", sans-serif;
+  font-weight: 400;
+}
+
+.animate-carRun {
+  animation: carRun 2s linear infinite;
+}
+
+.animate-barRun {
+  animation: barRun 1.8s linear infinite;
+}
+
+.animate-trackMove {
+  animation: trackMove 2.2s linear infinite;
+}
+
+
+/* ---- Utilities remain unchanged ---- */
+@utility container {
+  margin-inline: auto;
+  padding-inline: 2rem;
+  @media (width >= 640px) { max-width: 640px; }
+  @media (width >= 768px) { max-width: 768px; }
+  @media (width >= 1024px) { max-width: 1024px; }
+  @media (width >= 1280px) { max-width: 1280px; }
+  @media (width >= 1400px) { max-width: 1400px; }
+}
