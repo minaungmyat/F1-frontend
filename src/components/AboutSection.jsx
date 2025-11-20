@@ -1,4 +1,5 @@
 import { Car, CardSimIcon, CarFront, CarFrontIcon, Code, Computer, Laptop, User } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export const AboutSection = () => {
     return (
@@ -22,10 +23,10 @@ export const AboutSection = () => {
                     </p>
 
                     <div className="flex flex-col sm:flex-row gap-4 pt-4 justify-center">
-                        <a href="#results" className="cosmic-button">
+                        <Link to="/results" className="cosmic-button">
                             {" "}
                             Race Results
-                        </a>
+                        </Link>
                     </div>
                 </div>
 

@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import verstappen from '../assets/drivers/verstappen.jpg';
 import tsunoda from '../assets/drivers/tsunoda.jpg';
 import russell from '../assets/drivers/russell.jpg';
@@ -50,6 +51,8 @@ export default function TeamCard({
   carImage,
   logoImage
 }) {
+  const navigate = useNavigate();
+
   return (
     <div
       className="relative rounded-xl overflow-hidden p-5 text-white shadow-lg"
@@ -88,9 +91,12 @@ export default function TeamCard({
                   style={{ objectPosition: "top" }}
                   alt={d}
                 />
-                <span className="text-base font-semibold">
+                <button
+                  onClick={() => navigate('/drivers', { state: { driverKey: key } })}
+                  className="text-base font-semibold hover:underline cursor-pointer transition-all"
+                >
                   {first} <strong>{last}</strong>
-                </span>
+                </button>
               </div>
             );
           })}
